@@ -125,6 +125,11 @@
 		</dependency>        
 	</dependencies>
     <build>
+		<directory>webapps</directory>
+		<outputDirectory>webapps/target/classes</outputDirectory>
+		<finalName>${artifactId}</finalName>
+		<testOutputDirectory>webapps/target/test-classes</testOutputDirectory>
+		<sourceDirectory>src/main/java</sourceDirectory>
         <plugins>
             <plugin>
                 <artifactId>maven-eclipse-plugin</artifactId>
