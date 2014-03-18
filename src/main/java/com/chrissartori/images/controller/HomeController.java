@@ -31,17 +31,10 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
-				DateFormat.LONG, locale);
-		String formattedDate = dateFormat.format(date);
-
+	@RequestMapping(value = { "/", "/index.html"}, method = RequestMethod.GET)
+	public String home(Model model) {		
 		SartoriImage image = sartoriImageService.getRandomSartoriImage();
 
-		model.addAttribute("serverTime", formattedDate);
 		model.addAttribute("url", image.getUrl());
 		model.addAttribute("description", image.getDescription());
 		return "home";
@@ -50,10 +43,7 @@ public class HomeController {
 	@RequestMapping(value = "/image", method = RequestMethod.GET)
 	public @ResponseBody
 	SartoriImage getRandomImage() {
-		LOG.info("Getting random image...");
-		SartoriImage image = new SartoriImage();
-		image.setDescription("Test description");
-		image.setUrl("image1.jpg");
+		SartoriImage image = sartoriImageService.getRandomSartoriImage();
 		return image;
 	}
 }

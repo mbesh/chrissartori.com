@@ -51,5 +51,4 @@
 	
 	<context:property-placeholder location="classpath:sartori.properties"/>
 
-
 </beans>
